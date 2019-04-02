@@ -1,0 +1,25 @@
+version: '1'
+services:
+  wsbb:
+    container_name: irpf
+    image: yuriploc/docker-irpf
+    build: .
+    devices:
+      - /dev/snd:/dev/snd
+    environment:
+      - LANG=pt_BR.UTF-8
+      - DISPLAY=${DISPLAY}
+      - XAUTHORITY=/home/irpf/.Xauthority
+      - HOST_HOSTNAME=${HOSTNAME}
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+    shm_size: 2g
+    volumes:
+      - /dev/shm:/dev/shm
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ${XAUTHORITY}:/tmp/.docker.xauth:ro
+      - ~/BankFiles:/home/irpf/Downloads
+      - /etc/machine-id:/etc/machine-id:ro
