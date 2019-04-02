@@ -7,7 +7,6 @@ ENV IRPF_DEPENDENCIES="libxext libxrender libxtst libxi"
 
 RUN apk update && \
     apk add --no-cache $IRPF_DEPENDENCIES && \
-    apk cache clean && \
     rm -rf /var/cache/apk/*
 
 RUN addgroup -g ${PGID} irpf && \
