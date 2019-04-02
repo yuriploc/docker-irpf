@@ -1,6 +1,6 @@
 version: '3'
 services:
-  wsbb:
+  irpf:
     container_name: irpf
     image: yuriploc/docker-irpf
     build: .
